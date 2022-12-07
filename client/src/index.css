@@ -1,0 +1,137 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.container-fluid {
+  --bs-gutter-x: 0 !important;
+}
+ 
+.row {
+  --bs-gutter-x: 0 !important;
+}
+
+p {
+  margin-bottom: 0rem !important;
+}
+
+.btn1 {
+  background: #FFFFFF 0% 0% no-repeat padding-box !important;
+  border-radius: 26px !important;
+  color: #221F20 !important;
+  font-weight: bold !important;
+  font-size: 12px !important;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  opacity: 1;
+  border: 1px solid #221F20;
+}
+
+button {
+  --bs-btn-padding-x: 1.5rem !important;
+  --bs-btn-padding-y: 0.7rem !important;
+}
+
+
+.footer {
+  background-color: #659AB1;
+  color: #FFFFFF;
+}
+
+
+
+.navbar-brand {
+  margin-right: 0rem !important;
+}
+
+.nav-link {
+  font-weight: bold;
+  letter-spacing: 1.95px !important;
+  color: #221F20 !important;
+  text-transform: uppercase !important;
+}
+
+ .inp {
+  background-color: #84AEC1;
+  padding: 1rem;
+  border: none;
+}
+
+.btn2 {
+  background-color: #84AEC1;
+  color: white;
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  font-size: 12px;
+}
+
+.inp::placeholder {
+  color: #EFF5F7;
+}
+
+.btn3 {
+  background-color: transparent;
+  letter-spacing: 1.8px;
+  color: #221F20;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 12px;
+  border: 1px solid #221F20;
+  border-radius: 25px;
+}
+
+button:hover {
+  background-color: #659AB1 !important;
+}
+
+.btn4 {
+  border: 1px solid #FFFFFF;
+  border-radius: 26px;
+  letter-spacing: 1.8px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: transparent;
+  font-size: 12px;
+}
+
+a {
+  text-decoration: none;
+  color:#659AB1;
+}
+
+.card-body {
+  padding-top: 3rem !important;
+  padding-bottom: 3rem !important;
+}
+
+.postuser {
+  background-color: #84AEC1;
+  height: 92.5vh;
+}
+
+td {
+  vertical-align: middle !important;
+}
+
+.icon {
+  font-size: 1rem !important;
+  margin:0.5rem;
+  cursor: pointer;
+}
