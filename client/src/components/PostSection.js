@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Nav, NavLink, Col, Row, Navbar, Container, Table, Button } from "react-bootstrap";
+import { Col, Row, Container, Button } from "react-bootstrap";
 import Post from "./Post";
 import Login from "./Login";
 import { useNavigate } from "react-router-dom";
@@ -27,21 +27,17 @@ const PostSection = () => {
   };
 
   return (
-    <Container fluid style={{ paddingTop: "4rem", paddingBottom: "4rem" }} className="footer">
-      <Row className="d-flex justify-content-center align-items-center text-center ">
-        <Col md={4}>
-          <p className="t3">Post</p>
-        </Col>
-      </Row>
-      <Row className="d-flex justify-content-center align-items-center text-center">
-        {posts.map((post) => {
-          return (
+    <Container style={{ paddingTop: "2rem", paddingBottom: "4rem" }}>
+      {posts.map((post) => {
+        return (
+          <Row className="d-flex justify-content-center align-items-center text-center">
             <Col md={6} className="d-flex justify-content-center align-items-center text-center">
               <Post post={post} />
             </Col>
-          );
-        })}
-      </Row>
+          </Row>
+        );
+      })}
+
       <Row className="d-flex justify-content-center align-items-center text-center ">
         <Col md={4}>
           <Button

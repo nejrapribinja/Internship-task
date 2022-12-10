@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from "react";
-import Footer from "./Footer";
-import Main from "./Main";
+import Navbar from "./Navbar";
 import PostSection from "./PostSection";
 
 const Home = () => {
   return (
     <>
-      <Main />
+      <Navbar />
       <PostSection />
-      <Footer />
     </>
   );
 };

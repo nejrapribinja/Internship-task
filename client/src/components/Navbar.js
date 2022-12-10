@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Nav, NavLink, Col, Row, Navbar, Container, NavDropdown, Button } from "react-bootstrap";
+import { Nav, Col, Navbar, Container } from "react-bootstrap";
 import { BsBag } from "react-icons/bs";
 import { BiUser, BiSearch } from "react-icons/bi";
 import Login from "./Login";

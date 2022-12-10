@@ -11,6 +11,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #84AEC1;
 }
 
 code {
@@ -47,14 +48,6 @@ button {
   --bs-btn-padding-y: 0.7rem !important;
 }
 
-
-.footer {
-  background-color: #659AB1;
-  color: #FFFFFF;
-}
-
-
-
 .navbar-brand {
   margin-right: 0rem !important;
 }
@@ -66,19 +59,12 @@ button {
   text-transform: uppercase !important;
 }
 
- .inp {
-  background-color: #84AEC1;
-  padding: 1rem;
-  border: none;
-}
-
 .btn2 {
   background-color: #84AEC1;
   color: white;
   border: none;
   text-transform: uppercase;
-  letter-spacing: 1.8px;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .inp::placeholder {

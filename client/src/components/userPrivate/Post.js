@@ -31,7 +31,10 @@ const Post = (props) => {
         <Col>
           <Form className="d-flex">
             <InputGroup>
-              <Form.Control placeholder="Write comment" />
+              <Form.Control
+                placeholder="Write comment"
+                onFocus={auth ? () => navigate("/allPosts") : () => setModalShow(true)}
+              />
               <Button className="d-flex align-items-center btn2">Comment</Button>
             </InputGroup>
           </Form>
