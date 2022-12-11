@@ -47,7 +47,7 @@ const MyPosts = () => {
           <Col md={4} className="d-flex justify-content-center">
             <BsFileEarmarkText
               style={{ fontSize: "2rem", marginRight: "3rem", cursor: "pointer" }}
-              onClick={() => navigate("/allPosts")}
+              onClick={() => navigate("/")}
             />
           </Col>
         </Row>

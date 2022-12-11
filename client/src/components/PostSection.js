@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Col, Row, Container, Button } from "react-bootstrap";
+import { Col, Row, Container, Button, Nav, Navbar } from "react-bootstrap";
 import Post from "./Post";
-import Login from "./Login";
 import { useNavigate } from "react-router-dom";
+import { MdOutlineLibraryAdd, MdOutlineEdit } from "react-icons/md";
+import { BiEdit } from "react-icons/bi";
+import AddPost from "./userPrivate/AddPost";
 
-const PostSection = () => {
+const AllPosts = () => {
   const [posts, setPosts] = useState([]);
   const [auth, setAuth] = useState(localStorage.getItem("isAuth"));
   const [modalShow, setModalShow] = useState(false);
@@ -27,29 +29,39 @@ const PostSection = () => {
   };
 
   return (
-    <Container style={{ paddingTop: "2rem", paddingBottom: "4rem" }}>
-      {posts.map((post) => {
-        return (
-          <Row className="d-flex justify-content-center align-items-center text-center">
-            <Col md={6} className="d-flex justify-content-center align-items-center text-center">
-              <Post post={post} />
+    <>
+      <Container fluid>
+        {auth ? (
+          <Row className="d-flex justify-content-end align-items-center text-center pt-5">
+            <Col md={4} className="d-flex justify-content-center">
+              <MdOutlineLibraryAdd
+                style={{ fontSize: "2rem", marginRight: "3rem", cursor: "pointer" }}
+                onClick={() => setModalShow(true)}
+              />
+              <BiEdit
+                style={{ fontSize: "2rem", cursor: "pointer" }}
+                onClick={() => navigate("/editPost")}
+              />
+
+              <AddPost show={modalShow} onHide={() => setModalShow(false)} />
             </Col>
           </Row>
-        );
-      })}
+        ) : (
+          <></>
+        )}
 
-      <Row className="d-flex justify-content-center align-items-center text-center ">
-        <Col md={4}>
-          <Button
-            className="btn4 mt-5"
-            onClick={auth ? () => navigate("/allPosts") : () => setModalShow(true)}>
-            View more
-          </Button>
-          <Login show={modalShow} onHide={() => setModalShow(false)} />
-        </Col>
-      </Row>
-    </Container>
+        {posts.map((post) => {
+          return (
+            <Row className="d-flex justify-content-center align-items-center text-center mt-5">
+              <Col md={12} className="d-flex justify-content-center align-items-center text-center">
+                <Post post={post} />
+              </Col>
+            </Row>
+          );
+        })}
+      </Container>
+    </>
   );
 };
 
-export default PostSection;
+export default AllPosts;

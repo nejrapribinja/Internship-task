@@ -1,11 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { Nav, Col, Navbar, Container } from "react-bootstrap";
-import { BsBag } from "react-icons/bs";
-import { BiUser, BiSearch } from "react-icons/bi";
+import { BiUser } from "react-icons/bi";
+import { MdLogout } from "react-icons/md";
 import Login from "./Login";
+import { useNavigate } from "react-router-dom";
 
 const Navigation = () => {
+  const [auth, setAuth] = useState(localStorage.getItem("isAuth"));
   const [modalShow, setModalShow] = useState(false);
+  const navigate = useNavigate();
+
+  const logout = async () => {
+    try {
+      localStorage.clear("isAuth");
+      await fetch("/logOut", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      navigate(0);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
@@ -27,9 +45,11 @@ const Navigation = () => {
             <Nav className="d-flex justify-content-end align-items-center text-end">
               <Nav.Link href="#kontakt">Brew guides</Nav.Link>
               <Nav.Link href="/login">Blog</Nav.Link>
-              <BiSearch className="icon" />
-              <BiUser className="icon" onClick={() => setModalShow(true)} />
-              <BsBag className="icon" />
+              {auth ? (
+                <MdLogout className="icon" onClick={logout} />
+              ) : (
+                <BiUser className="icon" onClick={() => setModalShow(true)} />
+              )}
             </Nav>
           </Col>
         </Navbar.Collapse>

@@ -9,6 +9,10 @@ const Post = (props) => {
   const [modalShow, setModalShow] = useState(false);
   const navigate = useNavigate();
 
+  const comment = async (e) => {
+    e.preventDefault();
+    console.log("ok");
+  };
   return (
     <Card className="text-center" style={{ width: "49rem", color: "black", margin: "2rem" }}>
       <Card.Header className="d-flex">
@@ -32,7 +36,11 @@ const Post = (props) => {
           <Form className="d-flex">
             <InputGroup>
               <Form.Control placeholder="Write comment" />
-              <Button className="d-flex align-items-center btn2">Comment</Button>
+              <Button
+                className="d-flex align-items-center btn2"
+                onClick={auth ? comment : () => setModalShow(true)}>
+                Comment
+              </Button>
             </InputGroup>
           </Form>
         </Col>
