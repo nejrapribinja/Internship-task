@@ -8,12 +8,14 @@ import AddPost from "./userPrivate/AddPost";
 
 const AllPosts = () => {
   const [posts, setPosts] = useState([]);
+  const [comments, setComments] = useState([]);
   const [auth, setAuth] = useState(localStorage.getItem("isAuth"));
   const [modalShow, setModalShow] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     getPost();
+    //getComments();
   }, []);
 
   const getPost = async () => {
@@ -22,6 +24,18 @@ const AllPosts = () => {
       const jsonData = await response.json();
 
       setPosts(jsonData);
+      console.log(jsonData);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getComments = async () => {
+    try {
+      const response = await fetch("/getComments");
+      const jsonData = await response.json();
+
+      setComments(jsonData);
       console.log(jsonData);
     } catch (err) {
       console.log(err);

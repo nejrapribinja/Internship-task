@@ -3,7 +3,7 @@ const { pool } = require("../db");
 exports.addPost = async (req, res) => {
   try {
     const { title, description, date, author } = req.body;
-    console.log(title, description, date, author);
+    //console.log(title, description, date, author);
     await pool.query(
       `insert into post (title, date_post, description, author) 
                     values ($1, $2, $3, $4)`,
@@ -33,7 +33,7 @@ exports.getUserPosts = async (req, res) => {
           console.info(err);
         }
         res.json(result.rows);
-        console.log(result.rows);
+        //console.log(result.rows);
       }
     );
   } catch (err) {
@@ -67,5 +67,25 @@ exports.deletePost = async (req, res) => {
     res.status(200);
   } catch (err) {
     console.log(err.message);
+  }
+};
+
+exports.addComment = async (req, res) => {
+  try {
+    const { text, author, postID } = req.body;
+    console.log(text, author, postID);
+    await pool.query(
+      `INSERT INTO comments (text_comment, date_comment, author, post_id) 
+                    values ($1, CURRENT_TIMESTAMP, $2, $3)`,
+      [text, author, postID],
+      (err, result) => {
+        if (err) {
+          console.info(err);
+        }
+        res.status(209).send("yes");
+      }
+    );
+  } catch (err) {
+    console.log(err);
   }
 };
