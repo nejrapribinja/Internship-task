@@ -43,7 +43,6 @@ const Navigation = () => {
           </Col>
           <Col>
             <Nav className="d-flex justify-content-end align-items-center text-end">
-              <Nav.Link href="#kontakt">Brew guides</Nav.Link>
               <Nav.Link href="/login">Blog</Nav.Link>
               {auth ? (
                 <MdLogout className="icon" onClick={logout} />

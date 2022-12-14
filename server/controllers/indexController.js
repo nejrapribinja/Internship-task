@@ -62,17 +62,27 @@ exports.logOut = (req, res, next) => {
 exports.getPosts = async (req, res) => {
   try {
     await pool.query(
-      `SELECT *, to_char(p.date_post, 'DD/MM/YYYY') as dat from post p 
+      `SELECT *, to_char(p.date_post, 'DD/MM/YYYY') as dat, p.id as post_id from post p 
         inner join users u on p.author = u.id
-        FULL OUTER JOIN comments c on c.post_id = p.id
       `,
-      [],
       (err, result) => {
         if (err) {
           console.info(err);
         }
-        res.json(result.rows);
-        console.log(result.rows);
+
+        const r1 = result.rows;
+        console.log(r1);
+
+        pool.query(`SELECT * from comments`, [], (err, result) => {
+          if (err) {
+            console.info(err);
+          }
+
+          const r2 = result.rows;
+          console.log(r2);
+          res.json({ r1, r2 });
+          //console.log(result.rows);
+        });
       }
     );
   } catch (err) {

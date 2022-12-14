@@ -23,7 +23,8 @@ const AllPosts = () => {
       const response = await fetch("/getPosts");
       const jsonData = await response.json();
 
-      setPosts(jsonData);
+      setPosts(jsonData.r1);
+      setComments(jsonData.r2);
       console.log(jsonData);
     } catch (err) {
       console.log(err);
@@ -68,7 +69,7 @@ const AllPosts = () => {
           return (
             <Row className="d-flex justify-content-center align-items-center text-center mt-5">
               <Col md={12} className="d-flex justify-content-center align-items-center text-center">
-                <Post post={post} />
+                <Post post={post} comments={comments} />
               </Col>
             </Row>
           );

@@ -42,6 +42,15 @@ const Post = (props) => {
           <BiCommentDetail /> 3
         </Col>
       </Card.Footer>
+      <Row className="m-4">
+        <Col>
+          {props.comments
+            .filter((comment) => comment.post_id == props.post.post_id)
+            .map((filteredComment) => (
+              <p>{filteredComment.text_comment}</p>
+            ))}
+        </Col>
+      </Row>
 
       <Row className="m-4">
         <Col>
