@@ -8,7 +8,7 @@ const Post = (props) => {
   const [modalShow, setModalShow] = useState(false);
   const [text, setText] = useState("");
   const [author, setAuthor] = useState(localStorage.getItem("id"));
-  const [postID, setPostID] = useState(props.post.id);
+  const [postID, setPostID] = useState(props.post.post_id);
 
   const comment = async (e) => {
     e.preventDefault();
@@ -42,15 +42,21 @@ const Post = (props) => {
           <BiCommentDetail /> 3
         </Col>
       </Card.Footer>
-      <Row className="m-4">
-        <Col>
-          {props.comments
-            .filter((comment) => comment.post_id == props.post.post_id)
-            .map((filteredComment) => (
-              <p>{filteredComment.text_comment}</p>
-            ))}
-        </Col>
-      </Row>
+
+      {props.comments
+        .filter((comment) => comment.post_id == props.post.post_id)
+        .map((filteredComment) => (
+          <>
+            <Row className="mt-4 ms-4">
+              <Col className="text-start text-muted">
+                {filteredComment.first_name} {filteredComment.last_name} | {filteredComment.dat}
+              </Col>
+            </Row>
+            <Row className="ms-5">
+              <Col className="text-start">{filteredComment.text_comment}</Col>
+            </Row>
+          </>
+        ))}
 
       <Row className="m-4">
         <Col>

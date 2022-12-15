@@ -25,7 +25,7 @@ exports.signIn = async (req, res) => {
 
 exports.logIn = async (req, res, next) => {
   const { email, password } = req.body;
-  console.log(email, password);
+  //console.log(email, password);
   const user = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
 
   if (user.rows.length == 0) {
@@ -71,18 +71,23 @@ exports.getPosts = async (req, res) => {
         }
 
         const r1 = result.rows;
-        console.log(r1);
+        //console.log(r1);
 
-        pool.query(`SELECT * from comments`, [], (err, result) => {
-          if (err) {
-            console.info(err);
+        pool.query(
+          `SELECT * , TO_CHAR(c.date_comment,'YYYY/MM/DD HH:MI') as dat from comments c
+              inner join users u on c.author = u.id`,
+          [],
+          (err, result) => {
+            if (err) {
+              console.info(err);
+            }
+
+            const r2 = result.rows;
+            //console.log(r2);
+            res.json({ r1, r2 });
+            //console.log(result.rows);
           }
-
-          const r2 = result.rows;
-          console.log(r2);
-          res.json({ r1, r2 });
-          //console.log(result.rows);
-        });
+        );
       }
     );
   } catch (err) {
