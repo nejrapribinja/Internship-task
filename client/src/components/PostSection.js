@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Col, Row, Container, Button, Nav, Navbar } from "react-bootstrap";
+import { Col, Row, Container } from "react-bootstrap";
 import Post from "./Post";
 import { useNavigate } from "react-router-dom";
 import { MdOutlineLibraryAdd, MdOutlineEdit } from "react-icons/md";
@@ -15,7 +15,6 @@ const AllPosts = () => {
 
   useEffect(() => {
     getPost();
-    //getComments();
   }, []);
 
   const getPost = async () => {
@@ -25,18 +24,6 @@ const AllPosts = () => {
 
       setPosts(jsonData.r1);
       setComments(jsonData.r2);
-      console.log(jsonData);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const getComments = async () => {
-    try {
-      const response = await fetch("/getComments");
-      const jsonData = await response.json();
-
-      setComments(jsonData);
       console.log(jsonData);
     } catch (err) {
       console.log(err);

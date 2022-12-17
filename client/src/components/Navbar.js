@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Nav, Col, Navbar, Container } from "react-bootstrap";
 import { BiUser } from "react-icons/bi";
 import { MdLogout } from "react-icons/md";
@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 const Navigation = () => {
   const [auth, setAuth] = useState(localStorage.getItem("isAuth"));
   const [modalShow, setModalShow] = useState(false);
+  const [user, setUser] = useState(localStorage.getItem("user"));
   const navigate = useNavigate();
 
   const logout = async () => {
@@ -32,8 +33,8 @@ const Navigation = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Col className="d-flex">
             <Nav>
-              <Nav.Link href="#galerija">Shop</Nav.Link>
-              <Nav.Link href="#galerija">Our story</Nav.Link>
+              <Nav.Link href="#">Shop</Nav.Link>
+              <Nav.Link href="#">Our story</Nav.Link>
             </Nav>
           </Col>
           <Col className="text-center">
@@ -43,9 +44,11 @@ const Navigation = () => {
           </Col>
           <Col>
             <Nav className="d-flex justify-content-end align-items-center text-end">
-              <Nav.Link href="/login">Blog</Nav.Link>
+              <Nav.Link href="/login">Blog </Nav.Link>
               {auth ? (
-                <MdLogout className="icon" onClick={logout} />
+                <>
+                  <p> Hi, {user}</p> <MdLogout className="icon" onClick={logout} />
+                </>
               ) : (
                 <BiUser className="icon" onClick={() => setModalShow(true)} />
               )}

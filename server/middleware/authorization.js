@@ -5,7 +5,6 @@ module.exports = function (req, res, next) {
   try {
     const jwtToken = req.cookies.access_token;
     //console.log(jwtToken);
-
     if (!jwtToken) {
       return res.status(403).json("Not authorize");
     }

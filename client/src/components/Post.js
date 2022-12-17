@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button, Card, Col, Row, InputGroup, Form } from "react-bootstrap";
 import { BiCommentDetail } from "react-icons/bi";
 import Login from "./Login";

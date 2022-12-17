@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Button, Modal, Form, Col, Row, FormCheck, FloatingLabel } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Modal, Form, Col, FloatingLabel } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 function Login(props) {
@@ -7,7 +7,6 @@ function Login(props) {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [user, setUser] = useState(0);
   const [log, setLog] = useState(true);
   const navigate = useNavigate();
 

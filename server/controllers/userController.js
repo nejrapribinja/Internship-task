@@ -44,7 +44,7 @@ exports.getUserPosts = async (req, res) => {
 exports.editPost = async (req, res) => {
   try {
     const { title, description, date, postID } = req.body;
-    console.log(title, description, date, postID);
+    //console.log(title, description, date, postID);
     await pool.query(
       `UPDATE post set title=$1, date_post=$2, description=$3 WHERE id=$4`,
       [title, date, description, postID],
@@ -73,7 +73,7 @@ exports.deletePost = async (req, res) => {
 exports.addComment = async (req, res) => {
   try {
     const { text, author, postID } = req.body;
-    console.log(text, author, postID);
+    //console.log(text, author, postID);
     await pool.query(
       `INSERT INTO comments (text_comment, date_comment, author, post_id) 
                     values ($1, CURRENT_TIMESTAMP, $2, $3)`,
